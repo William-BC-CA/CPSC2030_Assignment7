@@ -29,8 +29,9 @@ function validate()
     global $valid;
     global $val_messages;
     $count = 0;
-    $date = "date";
-    $email = $_GET("email");
+    $date = $_GET('date');
+    $email = $_GET('email');
+    $animals = $_GET('animals');
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
@@ -41,7 +42,7 @@ function validate()
         array_push($val_messages, "You must enter an email!");
       }
 
-      else if (!filter_var("email", FILTER_VALIDATE_EMAIL)){
+      else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         array_push($val_messages, "The format of your email is WRONG!");
       }
 
@@ -50,7 +51,7 @@ function validate()
         array_push($val_messages, "");
       }
 
-      if (isset($_POST["animals"])){
+      if (isset($_POST[$animals])){
         array_push($val_messages, "You must choose at least 3!");
       }
 
@@ -58,7 +59,7 @@ function validate()
         $count++;
       }
 
-      if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", "date")){
+      if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", $date)){
         $count++;
       }
       
