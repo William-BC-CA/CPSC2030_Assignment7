@@ -37,7 +37,8 @@ function validate()
       // email: '#^(.+)@([^\.].*)\.([a-z]{2,})$#'
       // date: '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#'
 
-      $date = $_POST("date");
+      // VARIABLES
+      $date = $_POST["date"];
       $email = $_POST("email");
       $animals = $_POST["animals"];
       $checkboxes = $_POST["checkbox"];
