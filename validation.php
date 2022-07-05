@@ -29,9 +29,9 @@ function validate()
     global $valid;
     global $val_messages;
     $count = 0;
-    $date = $_GET('date');
-    $email = $_GET('email');
-    $animals = $_GET('animals');
+    $date = $_POST('date');
+    $email = $_POST('email');
+    $animals = $_POST('animals');
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
