@@ -4,6 +4,11 @@ $valid = false;
 // Global array of validation messages. For valid fields, message is ""
 $val_messages = Array();
 
+$date = $_POST("date");
+$email = $_POST("email");
+$animals = $_POST("animals");
+$count = 0;
+
 // Output the results if all fields are valid.
 function the_results()
 {
@@ -28,10 +33,10 @@ function validate()
 {
     global $valid;
     global $val_messages;
-    $count = 0;
-    $date = $_POST("date");
-    $email = $_POST("email");
-    $animals = $_POST("animals");
+    global $count;
+    global $date;
+    global $email;
+    global $animals;
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
