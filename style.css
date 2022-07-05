@@ -1,0 +1,106 @@
+html
+{
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+body
+{
+  display: flex;
+ flex-direction: column;
+
+ align-items: center;
+}
+.wrapper
+{
+  max-width: 800px;
+  width:100%;
+}
+
+
+form
+{
+
+
+  box-sizing: border-box;
+
+  border:4px solid coral;
+  border-radius: 10px;
+
+  margin-bottom: 1rem;
+}
+
+form, form>label
+{
+
+
+
+  display: flex;
+  flex-direction: column;
+}
+
+form>*
+{
+  margin:.5rem;
+}
+
+
+fieldset label
+{
+  margin-bottom:.5rem;
+  margin-right:1rem;
+}
+
+input[type="submit"], input[type="reset"]
+{
+  align-self: center;
+}
+
+.help-block, .failure-message
+{
+  color:red;
+
+  animation-name: glow;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.failure-message
+{
+  color:deeppink;
+  font-style: italic;
+}
+
+.results
+{
+
+  border:4px solid rebeccapurple;
+
+  border-radius: 7px;
+  padding:1rem;
+
+  box-sizing: border-box;
+}
+
+.result-text
+{
+  color:white;
+  background-color: rebeccapurple;
+  border-radius: 7px;
+  padding:.5rem;
+  margin:.5rem;
+
+}
+
+
+@keyframes glow
+{
+  from {
+    text-shadow: 0 0 1px rgba(255,0,0,.2);
+  }
+
+  to {
+    text-shadow: 0 0 4px rgba(255,0,0,.6);
+  }
+}
