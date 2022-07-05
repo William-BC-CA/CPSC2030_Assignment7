@@ -40,6 +40,9 @@ function validate()
       $date = $_POST("date");
       $email = $_POST("email");
       $animals = $_POST["animals"];
+      $checkboxes = $_POST["checkbox"];
+
+      // EMAIL
       if (empty($_POST[$email])){
         array_push($val_messages, "You must enter an email!");
       }
@@ -53,7 +56,11 @@ function validate()
         array_push($val_messages, "");
       }
 
-      if (isset($_POST[$animals])){
+      // ANIMALS
+      // if (isset($_POST[$animals])){
+      //   array_push($val_messages, "You must choose at least 3!");
+      // }
+      if (count($checkboxes) < 3){
         array_push($val_messages, "You must choose at least 3!");
       }
 
@@ -61,6 +68,7 @@ function validate()
         $count++;
       }
 
+      // DATE
       if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", $date)){
         $count++;
       }
