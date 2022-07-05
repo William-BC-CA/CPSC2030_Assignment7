@@ -3,10 +3,6 @@
 $valid = false;
 // Global array of validation messages. For valid fields, message is ""
 $val_messages = Array();
-
-$date = $_POST("date");
-$email = $_POST("email");
-$animals = $_POST["animals"];
 $count = 0;
 
 // Output the results if all fields are valid.
@@ -34,15 +30,16 @@ function validate()
     global $valid;
     global $val_messages;
     global $count;
-    global $date;
-    global $email;
-    global $animals;
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
       // Use the following patterns to validate email and date or come up with your own.
       // email: '#^(.+)@([^\.].*)\.([a-z]{2,})$#'
       // date: '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#'
+
+      $date = $_POST("date");
+      $email = $_POST("email");
+      $animals = $_POST["animals"];
       if (empty($_POST[$email])){
         array_push($val_messages, "You must enter an email!");
       }
