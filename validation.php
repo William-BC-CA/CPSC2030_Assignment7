@@ -4,8 +4,8 @@ $valid = false;
 // Global array of validation messages. For valid fields, message is ""
 $val_messages = Array();
 
-$date = $_POST["date"];
-$email = $_POST["email"];
+$date = $_POST("date");
+$email = $_POST("email");
 $animals = $_POST["animals"];
 $count = 0;
 
