@@ -5,7 +5,7 @@ $valid = false;
 $val_messages = Array();
 
 $date = $_POST["date"];
-$email = $_POST("email");
+$email = $_POST["email"];
 $animals = $_POST["animals"];
 $count = 0;
 
