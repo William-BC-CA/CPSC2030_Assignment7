@@ -30,13 +30,14 @@ function validate()
     global $val_messages;
     $count = 0;
     $date = "date";
+    $email = "email";
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
       // Use the following patterns to validate email and date or come up with your own.
       // email: '#^(.+)@([^\.].*)\.([a-z]{2,})$#'
       // date: '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#'
-      if (empty($_POST["email"])){
+      if (empty($_POST[$email])){
         array_push($val_messages, "You must enter an email!");
       }
 
