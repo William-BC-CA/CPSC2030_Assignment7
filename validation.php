@@ -30,7 +30,7 @@ function validate()
     global $val_messages;
     $count = 0;
     $date = "date";
-    $email = "email";
+    $email = $_GET("email");
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
