@@ -11,7 +11,15 @@ function the_results()
 
   if($_SERVER["REQUEST_METHOD"]=="POST")
   {
-
+    if ($valid == true){
+      echo "<div class = 'results'>";
+      echo "<p class = 'result-text'>email";
+      echo "<br>";
+      echo "animals";
+      echo "<br>";
+      echo "date</p>";
+      echo "</div>";
+    }
   }
 }
 
@@ -20,12 +28,42 @@ function validate()
 {
     global $valid;
     global $val_messages;
+    $count = 0;
+    $date = "date";
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
       // Use the following patterns to validate email and date or come up with your own.
       // email: '#^(.+)@([^\.].*)\.([a-z]{2,})$#'
       // date: '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#'
+      if (empty($_POST["email"])){
+        array_push($val_messages, "You must enter an email!");
+      }
+
+      else if (!filter_var("email", FILTER_VALIDATE_EMAIL)){
+        array_push($val_messages, "The format of your email is WRONG!");
+      }
+
+      else {
+        $count++;
+        array_push($val_messages, "");
+      }
+
+      if (isset($_POST["animals"])){
+        array_push($val_messages, "You must choose at least 3!");
+      }
+
+      else {
+        $count++;
+      }
+
+      if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", "date")){
+        $count++;
+      }
+      
+      if ($count == 3){
+        $valid = true;
+      }
     }
 }
 
@@ -36,6 +74,8 @@ function the_validation_message($type) {
 
   if($_SERVER['REQUEST_METHOD']== 'POST')
   {
-
+    if ($valid == false){
+      echo $val_messages;
+    }
   }
 }
