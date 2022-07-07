@@ -22,15 +22,16 @@ function the_results()
      *      b. For favorite animals, you can loop through the animals array and print out an <ul> where each animal is an <li>
      **/
     if ($valid == true){
-      echo "<div class = 'results'>";
-      echo "<div class = 'result-text'>Your email address is: $_POST(email)</div>";
-      echo "<div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
+      echo "<div class = 'results'>;
+      // TODO: add <?php> tags for all the variables
+      <div class = 'result-text'>Your email address is: <?php $_POST["email"]?> </div>;
+      <div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
       foreach($_POST("animals") as $value){
-        echo "<li>$value</li>";
+        echo "<li>".$value."</li>";
       }
-      echo "</ul></div>";
-      echo "<div class = 'result-text'>Your favourite date is: $_POST(date)</div>";
-      echo "</div>";
+      echo "</ul></div>;
+      <div class = 'result-text'>Your favourite date is: <?php $_POST["date"]?> </div>;
+      </div>";
     }
   }
 }
@@ -167,10 +168,11 @@ function the_validation_message($type) {
      * 1. If the global val_messages array has a value set (e.g please choose at least three animals) for a particular $type, return a <p> tag with value stored: $val_messages[$type]
      * 2. For the <p> tag, you should use the 'failure-message' class provided in the CSS file.
      * */
-    if (isset($val_messages[$type])){
+    // TODO: add isset and if type is animals
+    if (isset($val_messages[$type]) || (type == "animals" && isset($_POST["animals"])){
       echo "<p class = 'failure-message'>";
       $toPrint = $val_messages[$type];
-      echo "$toPrint";
+      echo $toPrint;
       echo "</p>";
     }
   }
