@@ -164,9 +164,10 @@ function the_validation_message($type) {
      * 2. For the <p> tag, you should use the 'failure-message' class provided in the CSS file.
      * */
     echo "<p class = 'failure-message'>";
-    $toPrint = $val_messages[$type];
-    echo "$toPrint";
+    if (isset($val_messages[$type])){
+      $toPrint = $val_messages[$type];
+      echo "$toPrint";
+    }
     echo "</p>";
-    
   }
 }
