@@ -75,19 +75,23 @@ function validate()
         // array_push($val_messages, "You must enter an email!");
         foreach($_POST as $type => $value){
           if ($type == "email"){
-            if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $_POST($type))){
-              $val_messages[$type] = "";
+            $email = $_POST["email"];
+            $eChecker= '#^(.+)@([^\.].*)\.([a-z]{2,})$#';
+            if(preg_match($eChecker, $email)){
+              $val_messages[$email] = "";
             }
             else {
-              $val_messages[$type] = "Nice try on attempting to scam me with an invalid email!";
+              $val_messages[$email] = "Nice try on attempting to scam me with an invalid email!";
             }
           }
           if ($type == "date"){
-            if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $_POST($type))){
-              $val_messages[$type] = "";
+            $date = $_POST["date"];
+            $dChecker = '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#';
+            if (preg_match($dChecker, $date)){
+              $val_messages[$date] = "";
             }
             else{
-              $val_messages[$type] = "Are you playing dumb? That is not the correct format for a date!";
+              $val_messages[$date] = "Are you playing dumb? That is not the correct format for a date!";
             }
           }
         }
