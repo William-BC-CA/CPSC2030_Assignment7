@@ -73,8 +73,8 @@ function validate()
       // if (empty($_POST[$email])){
       if(isset($_POST["email"])){
         // array_push($val_messages, "You must enter an email!");
-        foreach($_POST as $type){
-          if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $type)){
+        foreach($_POST as $type => $value){
+          if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $_POST($type))){
             $val_messages[$type] = "";
           }
           else {
@@ -111,8 +111,8 @@ function validate()
 
       // DATE
       if (isset($_POST["date"])){
-        foreach($_POST as $type){
-          if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $type)){
+        foreach($_POST as $type => $value){
+          if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $_POST($type))){
             $val_messages[$type] = "";
           }
           else{
