@@ -64,45 +64,69 @@ function validate()
        * */
 
       // VARIABLES
-      $date = $_POST["date"];
-      $email = $_POST("email");
-      $animals = $_POST["animals"];
-      $checkboxes = $_POST["checkbox"];
+      // $date = $_POST["date"];
+      // $email = $_POST("email");
+      // $animals = $_POST["animals"];
+      // $checkboxes = $_POST["checkbox"];
 
       // EMAIL
-      if (empty($_POST[$email])){
-        array_push($val_messages, "You must enter an email!");
+      // if (empty($_POST[$email])){
+      if(isset($_POST["email"])){
+        // array_push($val_messages, "You must enter an email!");
+        foreach($_POST as $type){
+          if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $type)){
+            $val_messages[$type] = "";
+          }
+          else {
+            $val_messages[$type] = "Nice try on attempting to scam me with an invalid email!";
+          }
+        }
       }
 
-      else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        array_push($val_messages, "The format of your email is WRONG!");
-      }
+      // else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      //   array_push($val_messages, "The format of your email is WRONG!");
+      // }
 
-      else {
-        $count++;
-        array_push($val_messages, "");
-      }
+      // else {
+      //   $count++;
+      //   array_push($val_messages, "");
+      // }
 
       // ANIMALS
-      // if (isset($_POST[$animals])){
+      if (isset($_POST["animals"])){
+        if (count($_POST["animals"]) >= 3){
+          $val_messages["animals"] = "";
+        }
+        else {
+          $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
+        }
+      }
+      // if (count($checkboxes) < 3){
       //   array_push($val_messages, "You must choose at least 3!");
       // }
-      if (count($checkboxes) < 3){
-        array_push($val_messages, "You must choose at least 3!");
-      }
 
-      else {
-        $count++;
-      }
+      // else {
+      //   $count++;
+      // }
 
       // DATE
-      if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", $date)){
-        $count++;
+      if (isset($_POST["date"])){
+        foreach($_POST as $type){
+          if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $type)){
+            $val_messages[$type] = "";
+          }
+          else{
+            $val_messages[$type] = "Are you playing dumb? That is not the correct format for a date!";
+          }
+        }
       }
+      // if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", $date)){
+      //   $count++;
+      // }
       
-      if ($count == 3){
-        $valid = true;
-      }
+      // if ($count == 3){
+      //   $valid = true;
+      // }
     }
 }
 
