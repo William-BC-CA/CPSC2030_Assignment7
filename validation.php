@@ -24,7 +24,11 @@ function the_results()
     if ($valid == true){
       echo "<div class = 'results'>";
       echo "<div class = 'result-text'>Your email address is: $_POST(email)</div>";
-      echo "<div class = 'result-text'>Your favorite animals are: </div>"; // Use foreach
+      echo "<div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
+      foreach($_POST("animals") as $value){
+        echo "<li>$value</li>";
+      }
+      echo "</ul></div>";
       echo "<div class = 'result-text'>Your favourite date is: $_POST(date)</div>";
       echo "</div>";
     }
