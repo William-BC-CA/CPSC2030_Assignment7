@@ -127,8 +127,8 @@ function validate()
       // if ($count == 3){
       //   $valid = true;
       // }
-      foreach($val_messages as $type){
-        if ($type != ""){
+      foreach($val_messages as $value){
+        if ($value != ""){
           return;
         }
       }
