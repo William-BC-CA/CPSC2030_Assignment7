@@ -127,6 +127,13 @@ function validate()
       // if ($count == 3){
       //   $valid = true;
       // }
+      foreach($val_messages as $type){
+        if ($type != ""){
+          return;
+        }
+      }
+
+      $valid = true;
     }
 }
 
@@ -142,8 +149,7 @@ function the_validation_message($type) {
      * 1. If the global val_messages array has a value set (e.g please choose at least three animals) for a particular $type, return a <p> tag with value stored: $val_messages[$type]
      * 2. For the <p> tag, you should use the 'failure-message' class provided in the CSS file.
      * */
-    if ($valid == false){
-      echo $val_messages;
-    }
+    
+    
   }
 }
