@@ -7,4 +7,4 @@
 - [x] check isset for email and date!
 - [x] for each inside for post type value!
 - [x] if statement to check if the type is email
-- [ ] break it down, make sure that preg_match has two parameters.
+- [x] break it down, make sure that preg_match has two parameters.
