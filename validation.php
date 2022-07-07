@@ -158,12 +158,16 @@ function the_validation_message($type) {
 
   if($_SERVER['REQUEST_METHOD']== 'POST')
   {
-    // Task C
+    // TODO: Task C
     /**
      * 1. If the global val_messages array has a value set (e.g please choose at least three animals) for a particular $type, return a <p> tag with value stored: $val_messages[$type]
      * 2. For the <p> tag, you should use the 'failure-message' class provided in the CSS file.
      * */
-    
+    echo "<p>";
+    foreach($val_messages as $value){
+      echo "$value<br>";
+    }
+    echo "</p>";
     
   }
 }
