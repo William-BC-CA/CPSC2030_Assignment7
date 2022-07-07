@@ -71,18 +71,39 @@ function validate()
 
       // EMAIL
       // if (empty($_POST[$email])){
-      if(isset($_POST["email"])){
+      if(isset($_POST["email"]) && isset($_POST["date"])){
         // array_push($val_messages, "You must enter an email!");
         foreach($_POST as $type => $value){
-          if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $_POST($type))){
-            $val_messages[$type] = "";
+          if ($type == "email"){
+            if(preg_match('#^(.+)@([^\.].*)\.([a-z]{2,})$#', $_POST($type))){
+              $val_messages[$type] = "";
+            }
+            else {
+              $val_messages[$type] = "Nice try on attempting to scam me with an invalid email!";
+            }
           }
-          else {
-            $val_messages[$type] = "Nice try on attempting to scam me with an invalid email!";
+          if ($type == "date"){
+            if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $_POST($type))){
+              $val_messages[$type] = "";
+            }
+            else{
+              $val_messages[$type] = "Are you playing dumb? That is not the correct format for a date!";
+            }
           }
         }
       }
 
+      // DATE
+      // if (isset($_POST["date"])){
+      //   foreach($_POST as $type => $value){
+          // if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $_POST($type))){
+          //   $val_messages[$type] = "";
+          // }
+          // else{
+          //   $val_messages[$type] = "Are you playing dumb? That is not the correct format for a date!";
+          // }
+      //   }
+      // }
       // else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
       //   array_push($val_messages, "The format of your email is WRONG!");
       // }
@@ -109,17 +130,6 @@ function validate()
       //   $count++;
       // }
 
-      // DATE
-      if (isset($_POST["date"])){
-        foreach($_POST as $type => $value){
-          if (preg_match('#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#', $_POST($type))){
-            $val_messages[$type] = "";
-          }
-          else{
-            $val_messages[$type] = "Are you playing dumb? That is not the correct format for a date!";
-          }
-        }
-      }
       // if (preg_match("#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#", $date)){
       //   $count++;
       // }
