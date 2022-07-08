@@ -25,13 +25,13 @@ function the_results()
       // TODO: add <?php> tags for all the variables
       echo "
       <div class = 'results'>
-      <div class = 'result-text'>Your email address is: <?php $_POST["email"]?> </div>
+      <div class = 'result-text'>Your email address is: ". $_POST["email"]." </div>
       <div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
-      foreach($_POST("animals") as $value){
+      foreach($_POST["animals"] as $value){
         echo "<li>".$value."</li>";
       }
       echo "</ul></div>
-      <div class = 'result-text'>Your favourite date is: <?php $_POST["date"]?> </div>
+      <div class = 'result-text'>Your favourite date is: ".$_POST["date"]."</div>
       </div>
       ";
     }
@@ -125,13 +125,12 @@ function validate()
       // }
 
       // ANIMALS
-      if (isset($_POST["animals"])){
-        if (count($_POST["animals"]) >= 3){
+      if ((isset($_POST["animals"])) && (count($_POST["animals"]) >= 3)){
           $val_messages["animals"] = "";
         }
-        else {
-          $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
-        }
+      else {
+        $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
+      }
       }
       // if (count($checkboxes) < 3){
       //   array_push($val_messages, "You must choose at least 3!");
