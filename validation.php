@@ -23,10 +23,12 @@ function the_results()
      **/
     if ($valid == true){
       // TODO: add <?php> tags for all the variables
+      // Correction: use concatenation for variables, no need to start  <?php tags
       echo "
       <div class = 'results'>
-      <div class = 'result-text'>Your email address is: ". $_POST["email"]." </div>
-      <div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
+      <div class = 'result-text'>Your email address is:". $_POST["email"]." </div>
+      <div class = 'result-text'>Your favorite animals are: <ul>"; 
+      // Use foreach: Fix - wrong syntax, should be [] not ()
       foreach($_POST["animals"] as $value){
         echo "<li>".$value."</li>";
       }
@@ -85,20 +87,20 @@ function validate()
             $email = $_POST["email"];
             $eChecker= '#^(.+)@([^\.].*)\.([a-z]{2,})$#';
             if(preg_match($eChecker, $email)){
-              $val_messages[$email] = "";
+              $val_messages['email'] = "";
             }
             else {
-              $val_messages[$email] = "Nice try on attempting to scam me with an invalid email!";
+              $val_messages['email'] = "Nice try on attempting to scam me with an invalid email!";
             }
           }
           if ($type == "date"){
             $date = $_POST["date"];
             $dChecker = '#^\d{4}/((0[1-9])|(1[0-2]))/((0[1-9])|([12][0-9])|(3[01]))$#';
             if (preg_match($dChecker, $date)){
-              $val_messages[$date] = "";
+              $val_messages['date'] = "";
             }
             else{
-              $val_messages[$date] = "Are you playing dumb? That is not the correct format for a date!";
+              $val_messages['date'] = "Are you playing dumb? That is not the correct format for a date!";
             }
           }
         }
@@ -124,14 +126,13 @@ function validate()
       //   array_push($val_messages, "");
       // }
 
-      // ANIMALS
+      // ANIMALS - fix: combined isset AND count
       if ((isset($_POST["animals"])) && (count($_POST["animals"]) >= 3)){
           $val_messages["animals"] = "";
       }
       else {
         $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
       }
-    }
       // if (count($checkboxes) < 3){
       //   array_push($val_messages, "You must choose at least 3!");
       // }
@@ -154,8 +155,8 @@ function validate()
       }
 
       $valid = true;
-  }
-
+    }
+}
 
 // Display error message if field not valid. Displays nothing if the field is valid.
 function the_validation_message($type) {
