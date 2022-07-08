@@ -1,1 +1,1 @@
-<p>See a7.php</p>
+<p>Add /a7.php to the end of the url!</p>
