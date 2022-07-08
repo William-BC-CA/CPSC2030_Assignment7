@@ -127,11 +127,11 @@ function validate()
       // ANIMALS
       if ((isset($_POST["animals"])) && (count($_POST["animals"]) >= 3)){
           $val_messages["animals"] = "";
-        }
+      }
       else {
         $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
       }
-      }
+    }
       // if (count($checkboxes) < 3){
       //   array_push($val_messages, "You must choose at least 3!");
       // }
@@ -154,8 +154,8 @@ function validate()
       }
 
       $valid = true;
-    }
-}
+  }
+
 
 // Display error message if field not valid. Displays nothing if the field is valid.
 function the_validation_message($type) {
