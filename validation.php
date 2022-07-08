@@ -22,16 +22,19 @@ function the_results()
      *      b. For favorite animals, you can loop through the animals array and print out an <ul> where each animal is an <li>
      **/
     if ($valid == true){
-      echo "<div class = 'results'>;
       // TODO: add <?php> tags for all the variables
-      <div class = 'result-text'>Your email address is: <?php $_POST["email"]?> </div>;
+      echo "
+      <div class = 'results'>
+      <div class = 'result-text'>Your email address is: <?php $_POST["email"]?> </div>
       <div class = 'result-text'>Your favorite animals are: <ul>"; // Use foreach
       foreach($_POST("animals") as $value){
         echo "<li>".$value."</li>";
       }
-      echo "</ul></div>;
-      <div class = 'result-text'>Your favourite date is: <?php $_POST["date"]?> </div>;
-      </div>";
+      echo "
+      </ul></div>
+      <div class = 'result-text'>Your favourite date is: <?php $_POST["date"]?> </div>
+      </div>
+      ";
     }
   }
 }
