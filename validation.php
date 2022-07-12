@@ -90,7 +90,7 @@ function validate()
               $val_messages['email'] = "";
             }
             else {
-              $val_messages['email'] = "Nice try on attempting to scam me with an invalid email!";
+              $val_messages['email'] = "email is not correct format";
             }
           }
           if ($type == "date"){
@@ -100,7 +100,7 @@ function validate()
               $val_messages['date'] = "";
             }
             else{
-              $val_messages['date'] = "Are you playing dumb? That is not the correct format for a date!";
+              $val_messages['date'] = "please enter a valid date in the format yyyy/mm/dd";
             }
           }
         }
@@ -131,7 +131,7 @@ function validate()
           $val_messages["animals"] = "";
       }
       else {
-        $val_messages["animals"] = "Oi! Did you read the instructions? Choose 3 or more!";
+        $val_messages["animals"] = "please choose at least three animals";
       }
       // if (count($checkboxes) < 3){
       //   array_push($val_messages, "You must choose at least 3!");
