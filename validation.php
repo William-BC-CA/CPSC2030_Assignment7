@@ -26,7 +26,7 @@ function the_results()
       // Correction: use concatenation for variables, no need to start  <?php tags
       echo "
       <div class = 'results'>
-      <div class = 'result-text'>Your email address is:". $_POST["email"]." </div>
+      <div class = 'result-text'>Your email address is: ". $_POST["email"]." </div>
       <div class = 'result-text'>Your favorite animals are: <ul>"; 
       // Use foreach: Fix - wrong syntax, should be [] not ()
       foreach($_POST["animals"] as $value){
